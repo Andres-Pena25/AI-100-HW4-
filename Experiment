@@ -1,0 +1,49 @@
+from openai import OpenAI
+
+client = OpenAI(api_key="YOUR_API_KEY")
+
+#Single prompt 
+response = client.responses.create(
+    model="gpt-5.3",
+    input="Explain recursion in one sentence."
+)
+
+print(response.output[0].content[0].text)
+
+#Multiple prompts
+prompts = [
+    "Explain recursion in one sentence.",
+    "Explain recursion like I'm 5.",
+    "Give a Python example of recursion."
+]
+
+for p in prompts:
+    response = client.responses.create(
+        model="gpt-5.3",
+        input=p
+    
+    print("PROMPT:", p)
+    print("OUTPUT:", response.output[0].content[0].text)
+    print("-" * 50)
+
+#Temp test
+response = client.responses.create(
+    model="gpt-5.3",
+    input="Write a short motivational quote.",
+    temperature=0.9
+)
+
+print(response.output[0].content[0].text)
+
+#Fix I made
+response = client.responses.create(
+    model="gpt-5.3",
+    input=p
+)
+#Placed a missed parenthesis
+
+print("=== Experiment 1 ===")
+# run first test
+
+print("=== Experiment 2 ===")
+# run loop test
